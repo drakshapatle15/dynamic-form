@@ -905,36 +905,372 @@
 
 // export default CreateAgentForm;
 
+// import React, { useState } from "react";
+// import "./CreateAgentForm.css"; // Replace with your actual CSS file name
+
+// // New component to display a default form message
+// const DefaultFormMessage = ({
+//   isChecked,
+//   checkboxOptions,
+//   onAddOption,
+//   onCancelOption,
+//   newCheckboxOption,
+//   onChangeNewCheckboxOption,
+// }) => {
+//   return (
+//     <>
+//       <div className="default-form-message">
+//         <p>Hello! This is the default form message.</p>
+
+//         {isChecked && (
+//           <div>
+//             <h3>Checkbox :</h3>
+//             {/* <button onClick={handleAddCheckbox}>Add Checkbox</button> */}
+//             <ul>
+//               {checkboxOptions.map((option) => (
+//                 <li key={option.id}>{option.option}</li>
+//               ))}
+//               <li>
+//                 <input
+//                   type="text"
+//                   value={newCheckboxOption}
+//                   onChange={(e) => onChangeNewCheckboxOption(e.target.value)}
+//                 />
+//                 <button onClick={onAddOption}>Add Option</button>
+//                 <button onClick={onCancelOption}>Cancel</button>
+//               </li>
+//             </ul>
+//           </div>
+//         )}
+//         <div></div>
+//       </div>
+//     </>
+//   );
+// };
+
+// const CreateAgentForm = () => {
+//   // State for agent properties
+//   const [agentTitle, setAgentTitle] = useState("");
+//   const [editMode, setEditMode] = useState(false);
+//   const [isChecked, setIsChecked] = useState(false);
+//   const [radioValue, setRadioValue] = useState("");
+//   const [dateValue, setDateValue] = useState("");
+//   const [rangeValue, setRangeValue] = useState(0);
+//   const [checkboxOptions, setCheckboxOptions] = useState([]);
+//   const [newCheckboxOption, setNewCheckboxOption] = useState("");
+
+//   const handleTitleChange = (e) => {
+//     setAgentTitle(e.target.value);
+//   };
+
+//   const handleSaveAgent = () => {
+//     // Implement logic to save the agent with the specified title and other properties
+//     // You may need to make an API request to your Node.js backend here
+//     console.log("Saved Agent:", {
+//       title: agentTitle,
+//       editMode,
+//       isChecked,
+//       radioValue,
+//       dateValue,
+//       rangeValue,
+//       checkboxOptions,
+//     });
+//   };
+
+//   const handleAddCheckbox = () => {
+//     setCheckboxOptions([
+//       ...checkboxOptions,
+//       { id: Date.now(), option: "Option 1" },
+//     ]);
+//   };
+
+//   const handleAddOption = () => {
+//     setCheckboxOptions([
+//       ...checkboxOptions,
+//       { id: Date.now(), option: newCheckboxOption },
+//     ]);
+//     setNewCheckboxOption("");
+//   };
+
+//   const handleCancelOption = () => {
+//     setNewCheckboxOption(""); // Clear the new checkbox option
+//     setIsChecked(false); // Uncheck the checkbox
+//   };
+//   return (
+//     <div className="create-agent-form-container">
+//       <div className="left-side">
+//         {/* Default Form Message */}
+//         <DefaultFormMessage
+//           isChecked={isChecked}
+//           checkboxOptions={checkboxOptions}
+//           onCancelOption={handleCancelOption}
+//           onAddOption={handleAddOption}
+//           newCheckboxOption={newCheckboxOption}
+//           onChangeNewCheckboxOption={setNewCheckboxOption}
+//         />
+//       </div>
+
+//       <div className="right-side">
+//         {/* Create Agent Form */}
+//         <h2>Choose fields</h2>
+//         <ul className="form-fields">
+//           {/* Add other static fields here */}
+
+//           <li>
+//             <label htmlFor="checkboxdd">Checkbox</label>
+//             <input
+//               style={{ visibility: "hidden" }}
+//               type="checkbox"
+//               id="checkboxdd"
+//               checked={isChecked}
+//               onChange={() => setIsChecked(!isChecked)}
+//             />
+//           </li>
+//         </ul>
+
+//         <button onClick={handleSaveAgent}>Save </button>
+//         <button onClick={handleSaveAgent}>cancel</button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CreateAgentForm;
+
+// import React, { useState } from "react";
+// import "./CreateAgentForm.css"; // Replace with your actual CSS file name
+
+// const DefaultFormMessage = ({
+//   fieldType,
+//   isChecked,
+//   checkboxOptions,
+//   onAddOption,
+//   onCancelOption,
+//   newCheckboxOption,
+//   onChangeNewCheckboxOption,
+// }) => {
+//   return (
+//     <>
+//       <div className="default-form-message">
+//         <p>Hello! This is the default form message.</p>
+
+//         {fieldType === "checkbox" && (
+//           <div>
+//             <h3>Checkbox :</h3>
+//             <ul>
+//               {checkboxOptions.map((option) => (
+//                 <li key={option.id}>{option.option}</li>
+//               ))}
+//               <li>
+//                 <input
+//                   type="text"
+//                   value={newCheckboxOption}
+//                   onChange={(e) => onChangeNewCheckboxOption(e.target.value)}
+//                 />
+//                 <button onClick={onAddOption}>Add Option</button>
+//                 <button onClick={onCancelOption}>Cancel</button>
+//               </li>
+//             </ul>
+//           </div>
+//         )}
+
+//         {/* Add other conditions for different field types */}
+//         {/* For example, fieldType === "text" and render text input */}
+//         {fieldType === "text" && (
+//           <div>
+//             <h3>Text Field:</h3>
+//             <input type="text" placeholder="Enter text" />
+//           </div>
+//         )}
+//       </div>
+//     </>
+//   );
+// };
+
+// const CreateAgentForm = () => {
+//   const [fieldType, setFieldType] = useState("checkbox"); // Default field type
+//   const [agentTitle, setAgentTitle] = useState("");
+//   const [isChecked, setIsChecked] = useState(false);
+//   const [radioValue, setRadioValue] = useState("");
+//   const [dateValue, setDateValue] = useState("");
+//   const [rangeValue, setRangeValue] = useState(0);
+//   const [checkboxOptions, setCheckboxOptions] = useState([]);
+//   const [newCheckboxOption, setNewCheckboxOption] = useState("");
+
+//   const handleTitleChange = (e) => {
+//     setAgentTitle(e.target.value);
+//   };
+
+//   const handleSaveAgent = () => {
+//     console.log("Saved Agent:", {
+//       title: agentTitle,
+//       isChecked,
+//       radioValue,
+//       dateValue,
+//       rangeValue,
+//       checkboxOptions,
+//     });
+//   };
+
+//   const handleAddCheckbox = () => {
+//     setCheckboxOptions([
+//       ...checkboxOptions,
+//       { id: Date.now(), option: "Option 1" },
+//     ]);
+//   };
+
+//   const handleAddOption = () => {
+//     setCheckboxOptions([
+//       ...checkboxOptions,
+//       { id: Date.now(), option: newCheckboxOption },
+//     ]);
+//     setNewCheckboxOption("");
+//   };
+
+//   const handleCancelOption = () => {
+//     setNewCheckboxOption("");
+//     setIsChecked(false);
+//   };
+
+//   return (
+//     <div className="create-agent-form-container">
+//       <div className="left-side">
+//         {/* Default Form Message */}
+//         <DefaultFormMessage
+//           fieldType={fieldType}
+//           isChecked={isChecked}
+//           checkboxOptions={checkboxOptions}
+//           onCancelOption={handleCancelOption}
+//           onAddOption={handleAddOption}
+//           newCheckboxOption={newCheckboxOption}
+//           onChangeNewCheckboxOption={setNewCheckboxOption}
+//         />
+//       </div>
+
+//       <div className="right-side">
+//         {/* Create Agent Form */}
+//         <h2>Choose fields</h2>
+//         <ul className="form-fields">
+//           {/* Add other static fields here */}
+
+//           <li>
+//             <label htmlFor="checkbox">Checkbox</label>
+//             <input
+//               type="checkbox"
+//               id="checkbox"
+//               checked={fieldType === "checkbox"}
+//               onChange={() => setFieldType("checkbox")}
+//             />
+//           </li>
+//           <li>
+//             <label htmlFor="text">Text</label>
+//             <input
+//               type="checkbox"
+//               id="text"
+//               checked={fieldType === "text"}
+//               onChange={() => setFieldType("text")}
+//             />
+//           </li>
+//         </ul>
+
+//         <button onClick={handleSaveAgent}>Save</button>
+//         <button onClick={handleCancelOption}>Cancel</button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CreateAgentForm;
+
 import React, { useState } from "react";
 import "./CreateAgentForm.css"; // Replace with your actual CSS file name
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckSquare,
+  faSquare,
+  faCheckCircle,
+  faCircle,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
-// New component to display a default form message
 const DefaultFormMessage = ({
+  fieldType,
   isChecked,
   checkboxOptions,
-  onAddOption,
+
   onCancelOption,
+  onDeleteOption,
+  onAddOption,
   newCheckboxOption,
   onChangeNewCheckboxOption,
 }) => {
   return (
     <>
-      {/* <li>
-        <label htmlFor="agent-title">Title:</label>
-        <input
-          type="text"
-          id="agent-title"
-          value={agentTitle}
-          onChange={handleTitleChange}
-        />
-      </li> */}
       <div className="default-form-message">
         <p>Hello! This is the default form message.</p>
 
-        {isChecked && (
+        {/* {fieldType === "checkbox" && (
           <div>
-            <h3>Checkbox Options:</h3>
-            {/* <button onClick={handleAddCheckbox}>Add Checkbox</button> */}
+            <h3>Checkbox :</h3>
+            <ul>
+              {checkboxOptions.map((option) => (
+                <li key={option.id}>{option.option}</li>
+              ))}
+              <li>
+                <input
+                  type="text"
+                  value={newCheckboxOption}
+                  onChange={(e) => onChangeNewCheckboxOption(e.target.value)}
+                />
+                <button onClick={onAddOption}>Add Option</button>
+                <button onClick={onCancelOption}>Cancel</button>
+              </li>
+            </ul>
+          </div>
+        )} */}
+
+        {fieldType === "checkbox" && (
+          <div>
+            <h3>Checkbox :</h3>
+            <ul>
+              {checkboxOptions.map((option) => (
+                <li key={option.id}>
+                  {option.option}
+                  <button onClick={() => onDeleteOption(option.id)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </li>
+              ))}
+              <li>
+                <input
+                  type="text"
+                  value={newCheckboxOption}
+                  onChange={(e) => onChangeNewCheckboxOption(e.target.value)}
+                />
+                <button onClick={onAddOption}>Add Option</button>
+                <button onClick={onCancelOption}>Cancel</button>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {fieldType === "Title" && (
+          <div>
+            <h3>Text Field:</h3>
+            <input type="text" placeholder="Enter text" />
+          </div>
+        )}
+
+        {fieldType === "text" && (
+          <div>
+            <h3>Text Field:</h3>
+            <input type="text" placeholder="Enter text" />
+          </div>
+        )}
+
+        {fieldType === "multipleCheckbox" && (
+          <div>
+            <h3>Multiple Checkbox :</h3>
             <ul>
               {checkboxOptions.map((option) => (
                 <li key={option.id}>{option.option}</li>
@@ -951,46 +1287,48 @@ const DefaultFormMessage = ({
             </ul>
           </div>
         )}
-        <div></div>
+        {fieldType === "datePicker" && (
+          <div>
+            <h3>Date Picker:</h3>
+            <input type="date" />
+          </div>
+        )}
+
+        {fieldType === "rangePicker" && (
+          <div>
+            <h3>Range Picker:</h3>
+            <input type="range" />
+          </div>
+        )}
+
+        {fieldType === "radioOption" && (
+          <div>
+            <h3>Radio Option:</h3>
+            <ul>
+              {checkboxOptions.map((option) => (
+                <li key={option.id}>{option.option}</li>
+              ))}
+              <li>
+                <input
+                  type="text"
+                  value={newCheckboxOption}
+                  onChange={(e) => onChangeNewCheckboxOption(e.target.value)}
+                />
+                <button onClick={onAddOption}>Add Option</button>
+                <button onClick={onCancelOption}>Cancel</button>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </>
   );
 };
 
-const CheckboxOptions = ({
-  options,
-  onAddOption,
-  newOption,
-  onChangeNewOption,
-}) => {
-  return (
-    <div>
-      <h3>Checkbox Options:</h3>
-      <ul>
-        {options.map((option) => (
-          <li key={option.id}>{option.option}</li>
-        ))}
-        <li>
-          <input
-            type="text"
-            value={newOption}
-            onChange={(e) => onChangeNewOption(e.target.value)}
-          />
-          <button onClick={onAddOption}>Add Option</button>
-        </li>
-      </ul>
-    </div>
-  );
-};
-
 const CreateAgentForm = () => {
-  // State for agent properties
+  const [fieldType, setFieldType] = useState("checkbox"); // Default field type
   const [agentTitle, setAgentTitle] = useState("");
-  const [editMode, setEditMode] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  const [radioValue, setRadioValue] = useState("");
-  const [dateValue, setDateValue] = useState("");
-  const [rangeValue, setRangeValue] = useState(0);
   const [checkboxOptions, setCheckboxOptions] = useState([]);
   const [newCheckboxOption, setNewCheckboxOption] = useState("");
 
@@ -998,16 +1336,15 @@ const CreateAgentForm = () => {
     setAgentTitle(e.target.value);
   };
 
+  const handleDeleteOption = (optionId) => {
+    setCheckboxOptions(
+      checkboxOptions.filter((option) => option.id !== optionId)
+    );
+  };
   const handleSaveAgent = () => {
-    // Implement logic to save the agent with the specified title and other properties
-    // You may need to make an API request to your Node.js backend here
     console.log("Saved Agent:", {
       title: agentTitle,
-      editMode,
       isChecked,
-      radioValue,
-      dateValue,
-      rangeValue,
       checkboxOptions,
     });
   };
@@ -1028,15 +1365,18 @@ const CreateAgentForm = () => {
   };
 
   const handleCancelOption = () => {
-    setNewCheckboxOption(""); // Clear the new checkbox option
-    setIsChecked(false); // Uncheck the checkbox
+    setNewCheckboxOption("");
+    setIsChecked(false);
   };
+
   return (
     <div className="create-agent-form-container">
       <div className="left-side">
         {/* Default Form Message */}
         <DefaultFormMessage
+          fieldType={fieldType}
           isChecked={isChecked}
+          onDeleteOption={handleDeleteOption}
           checkboxOptions={checkboxOptions}
           onCancelOption={handleCancelOption}
           onAddOption={handleAddOption}
@@ -1052,74 +1392,70 @@ const CreateAgentForm = () => {
           {/* Add other static fields here */}
 
           <li>
-            <label htmlFor="checkbox">Text</label>
-            <input
+            <label htmlFor="checkbox">Checkbox</label>
+            <i
               style={{ visibility: "hidden" }}
+              nput
               type="checkbox"
               id="checkbox"
-              checked={isChecked}
-              onChange={() => setIsChecked(isChecked)}
+              checked={fieldType === "checkbox"}
+              onChange={() => setFieldType("checkbox")}
             />
           </li>
-
           <li>
-            <label htmlFor="checkboxdd">Checkbox</label>
+            <label htmlFor="text">Text</label>
             <input
               style={{ visibility: "hidden" }}
               type="checkbox"
-              id="checkboxdd"
-              checked={isChecked}
-              onChange={() => setIsChecked(!isChecked)}
+              id="text"
+              checked={fieldType === "text"}
+              onChange={() => setFieldType("text")}
             />
           </li>
-
           <li>
-            <label htmlFor="checkbox">radio:</label>
+            <label htmlFor="multipleCheckbox">Multiple Checkbox</label>
             <input
               style={{ visibility: "hidden" }}
               type="checkbox"
-              id="checkbox"
-              checked={isChecked}
-              onChange={() => setIsChecked(isChecked)}
+              id="multipleCheckbox"
+              checked={fieldType === "multipleCheckbox"}
+              onChange={() => setFieldType("multipleCheckbox")}
             />
           </li>
-
           <li>
-            <label htmlFor="checkbox">multiple checkbox</label>
+            <label htmlFor="datePicker">Date Picker</label>
             <input
               style={{ visibility: "hidden" }}
               type="checkbox"
-              id="checkbox"
-              checked={isChecked}
-              onChange={() => setIsChecked(isChecked)}
+              id="datePicker"
+              checked={fieldType === "datePicker"}
+              onChange={() => setFieldType("datePicker")}
             />
           </li>
-
           <li>
-            <label htmlFor="checkboxdd">Date Picker</label>
+            <label htmlFor="rangePicker">Range Picker</label>
             <input
               style={{ visibility: "hidden" }}
               type="checkbox"
-              id="checkboxdd"
-              checked={isChecked}
-              onChange={() => setIsChecked(!isChecked)}
+              id="rangePicker"
+              checked={fieldType === "rangePicker"}
+              onChange={() => setFieldType("rangePicker")}
             />
           </li>
-
           <li>
-            <label htmlFor="Range picker">Range Picker</label>
+            <label htmlFor="radioOption">Radio Option</label>
             <input
               style={{ visibility: "hidden" }}
               type="checkbox"
-              id="checkbox"
-              checked={isChecked}
-              onChange={() => setIsChecked(isChecked)}
+              id="radioOption"
+              checked={fieldType === "radioOption"}
+              onChange={() => setFieldType("radioOption")}
             />
           </li>
         </ul>
 
-        <button onClick={handleSaveAgent}>Save </button>
-        <button onClick={handleSaveAgent}>cancel</button>
+        <button onClick={handleSaveAgent}>Save</button>
+        <button onClick={handleCancelOption}>Cancel</button>
       </div>
     </div>
   );
